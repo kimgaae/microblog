@@ -14,7 +14,7 @@ public class Member implements Serializable {
 	private String name; // Member name 다른 회원들과 구분될 수 있는 이름(닉네임)
 	private String password; // 해당 회원 계정의 password
 	private java.util.Date regDate; // 계정 생성한 날짜
-	private int memberType; // 회원의 타입 (NORMAL_USER or SUPER_USER)
+	private int role; // 회원의 타입 (NORMAL_USER or SUPER_USER)
 	private int check; // 로그인 검증의 결과가 담길 변수
 
 	// Class Variables
@@ -41,17 +41,16 @@ public class Member implements Serializable {
 		this.name = name;
 		this.password = password;
 		this.email = email;
-		this.regDate = new java.util.Date();
-		this.memberType = Member.NORMAL_USER;
+		this.role = Member.NORMAL_USER;
 	}
 
 	// 조회용
-	public Member(String email, String name, String password, java.util.Date regDate, int memberType) {
+	public Member(String email, String name, String password, java.util.Date regDate, int role) {
 		this.email = email;
 		this.name = name;
 		this.password = password;
 		this.regDate = regDate;
-		this.memberType = memberType;
+		this.role = role;
 	}
 
 	// 로그인용
@@ -61,6 +60,11 @@ public class Member implements Serializable {
 	}
 
 	// Methods
+	@Override
+	public String toString() {
+		return "Member [email=" + email + ", name=" + name + ", password=" + password + ", regDate=" + regDate
+				+ ", role=" + role + ", check=" + check + "]";
+	}
 
 	// Getters
 	public String getEmail() {
@@ -79,8 +83,8 @@ public class Member implements Serializable {
 		return regDate;
 	}
 
-	public int getMemberType() {
-		return memberType;
+	public int getRole() {
+		return role;
 	}
 
 	public int getCheck() {
@@ -104,8 +108,8 @@ public class Member implements Serializable {
 		this.regDate = regDate;
 	}
 
-	public void setMemberType(int memberType) {
-		this.memberType = memberType;
+	public void setRole(int role) {
+		this.role = role;
 	}
 
 	public void setCheck(int check) {
