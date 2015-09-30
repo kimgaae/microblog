@@ -59,4 +59,13 @@ public interface MemberService {
 	 * @return 조건에 해당하는 회원의 수
 	 */
 	public abstract int getMemberCount(Map<String, Object> searchInfo);
+	
+	/**
+	 * 인자로 받은 회원 이름의 사용 가능 여부를 리턴한다.
+	 * @param 사용하고자하는 회원의 이름의 문자열 값
+	 * @return 사용가능한 이름일 경우 true, 이미 존재하는 이름일 경우 false를 리턴
+	 */
+	public abstract boolean availableName(String name);
+	
+	public abstract void giveRole(Member administrator, String targetMemberName, int role) throws DataNotFoundException;
 }
