@@ -15,7 +15,7 @@ public interface BlogService {
 	 * @param blogName 생성하고자하는 블로그의 이름
 	 * @throws DataDuplicatedException blogName과 일치하는 블로그가 이미 존재할 경우 발생하는 Exception
 	 */
-	public abstract void registerBlog(Member member, String blogName) throws DataDuplicatedException;
+	public abstract void createBlog(Member member, String blogName) throws DataDuplicatedException;
 	
 	/**
 	 * 인자로 받은 member 정보에 해당하는 회원의 Blog 정보에 해당하는 블로그를 갱신한다.
@@ -55,7 +55,15 @@ public interface BlogService {
 	 * @param blogName 언팔로우할 블로그 명
 	 * @throws DataNotFoundException member 혹은 blogName 정보에 해당하는 객체가 존재하지 않을 경우 발생하는 Exception
 	 */
-	public abstract void unfollowing(Member member, String blogName) throws DataNotFoundException;
+	public abstract void unfollow(Member member, String blogName) throws DataNotFoundException;
+	
+	/**
+	 * 회원이 팔로우한 블로그의 목록을 조회한다.
+	 * @param memberName 팔로우 목록을 조회하고자 하는 회원 객체
+	 * @return 해당 회원이 팔로우한 블로그 배열 객체를 리턴
+	 * @exception DataNotFoundException 인자로 받은 회원 객체에 대한 정보가 존재하지 않을 경우 발생하는 exception
+	 */
+	public abstract Blog[] getFollowingList(Member member) throws DataNotFoundException;
 	
 	/**
 	 * 조건에 해당하는 블로그 배열 객체를 조회한다.
